@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: enterprise-admin-email-parse
+spec:
+  schedule: '*/1 * * * *'
+  timeZone: Asia/Seoul
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: enterprise-admin-scheduler-test # image 경로
+              imagePullPolicy: IfNotPresent
+              command:
+                - node
+                - ./dist/apps/enterprise-admin/scheduler
+                - email-parse
+
+              envFrom:
+                - configMapRef:
+                    name: enterprise-admin-scheduler-config # config map명
+          restartPolicy: Never
