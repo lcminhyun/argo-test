@@ -5,8 +5,8 @@ metadata:
 spec:
   schedule: "*/1 * * * *"
   timeZone: "Asia/Seoul"
-  failedJobsHistoryLimit: 0
-  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
