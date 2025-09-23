@@ -2,8 +2,10 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: enterprise-export-data
+  annotations:
+    reloader.stakater.com/auto: "true" 
 spec:
-  schedule: 40 14 * * *
+  schedule: '*/1 * * * *'
   timeZone: Asia/Seoul
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
