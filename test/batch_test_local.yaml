@@ -18,7 +18,7 @@ spec:
               command:
                 - node
                 - ./dist/apps/enterprise/scheduler
-                - export
+                - export-test
 
               envFrom:
                 - configMapRef:
