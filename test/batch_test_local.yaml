@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: enterprise-export-data
 spec:
-  schedule: "35 11 * * *"
+  schedule: 40 14 * * *
   timeZone: Asia/Seoul
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
