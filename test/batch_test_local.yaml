@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: enterprise-export-data
+spec:
+  schedule: "10 0 * * *"
+  timeZone: "Asia/Seoul"
+  failedJobsHistoryLimit: 0
+  successfulJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: local-enterprise-scheduler # image 경로
+              imagePullPolicy: IfNotPresent
+              command:
+                - node
+                - ./dist/apps/enterprise/scheduler
+                - test
+
+              envFrom:
+                - configMapRef:
+                    name: enterprise-scheduler-local # config map명
+          restartPolicy: Never
